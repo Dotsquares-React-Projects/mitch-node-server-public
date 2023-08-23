@@ -6,6 +6,7 @@ const getDeviceData = async(req, res) => {
 
         res.status(200).json({device : device, isSuccess : true});
     }catch(error){
+        console.error(error);
         res.status(404).json({msg : "Not Found"});
     }
 };
