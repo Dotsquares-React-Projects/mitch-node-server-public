@@ -4,7 +4,7 @@ const getDeviceData = async(req, res) => {
     try{
         const device = await DeviceDataSchema.find();
 
-        res.status(200).json({device : device});
+        res.status(200).json({device : device, isSuccess : true});
     }catch(error){
         res.status(404).json({msg : "Not Found"});
     }
@@ -31,4 +31,14 @@ const postDeviceData = async(req, res) => {
     }
 };
 
-module.exports = {getDeviceData, postDeviceData};
+const deleteDeviceData = async(req, res) => {
+    try{
+        const device = await DeviceDataSchema.deleteMany({});
+
+        res.status(200).json({device : device, isSuccess : true});
+    }catch(error){
+        res.status(404).json({msg : "Not Found"});
+    }
+}
+
+module.exports = {getDeviceData, postDeviceData, deleteDeviceData};
